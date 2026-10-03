@@ -1,0 +1,224 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estatísticas da Empresa</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card p {
+            margin: 0 0 10px;
+            color: #666;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .grafico {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 700px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Estatísticas da Empresa</h1>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card">
+            <p>Visualizações</p>
+            <h2 id="totalVisualizacoes">160</h2>
+        </div>
+
+        <div class="card">
+            <p>Cliques</p>
+            <h2>48</h2>
+        </div>
+
+        <div class="card">
+            <p>Visualizações hoje</p>
+            <h2 id="visualizacoesHoje">31</h2>
+        </div>
+
+    </div>
+
+    <!-- GRÁFICO -->
+    <div class="grafico">
+
+        <h2>Visualizações nos últimos 7 dias</h2>
+
+        <canvas id="graficoVisualizacoes"></canvas>
+
+    </div>
+
+    <!-- BOTÃO DE TESTE -->
+    <button onclick="adicionarVisualizacao()">
+        Registrar visualização
+    </button>
+
+
+    <script>
+
+        // Dias do gráfico
+        const dias = [
+            'Seg',
+            'Ter',
+            'Qua',
+            'Qui',
+            'Sex',
+            'Sáb',
+            'Dom'
+        ];
+
+
+        // Dados iniciais de teste
+        const visualizacoes = [
+            12,
+            18,
+            15,
+            27,
+            22,
+            35,
+            31
+        ];
+
+
+        // Criar o gráfico
+        const ctx = document
+            .getElementById('graficoVisualizacoes');
+
+
+        const grafico = new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: dias,
+
+                datasets: [{
+                    label: 'Visualizações',
+
+                    data: visualizacoes,
+
+                    borderWidth: 3,
+
+                    tension: 0.3,
+
+                    fill: false
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+                        display: true
+                    }
+
+                }
+
+            }
+
+        });
+
+
+        // Registrar uma visualização
+        function adicionarVisualizacao() {
+
+            // Aumenta a quantidade do domingo
+            visualizacoes[6]++;
+
+            // Atualiza o gráfico
+            grafico.update();
+
+
+            // Calcula o total
+            const total = visualizacoes.reduce(
+                (soma, valor) => soma + valor,
+                0
+            );
+
+
+            // Atualiza o card de total
+            document.getElementById(
+                'totalVisualizacoes'
+            ).textContent = total;
+
+
+            // Atualiza o card de hoje
+            document.getElementById(
+                'visualizacoesHoje'
+            ).textContent = visualizacoes[6];
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
