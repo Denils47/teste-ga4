@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,14 @@
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V93JD2B04T"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-V93JD2B04T');
@@ -23,5 +29,16 @@
 
     <p>Esta página será usada apenas para testar o Google Analytics.</p>
 
+    <button onclick="registrarClique()">
+        Clique para testar evento
+    </button>
+
+    <script>
+        function registrarClique() {
+            gtag('event', 'teste_clique');
+        }
+    </script>
+
 </body>
+
 </html>
