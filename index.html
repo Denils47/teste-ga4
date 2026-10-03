@@ -5,39 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Teste Google Analytics</title>
+    <title>Pontual Licenças</title>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V93JD2B04T"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 40px;
         }
 
-        gtag('js', new Date());
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
 
-        gtag('config', 'G-V93JD2B04T');
-    </script>
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .acoes {
+            margin-top: 30px;
+        }
+
+        .btn-estatisticas {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-estatisticas:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Teste Google Analytics</h1>
+    <div class="container">
 
-    <p>Esta página será usada apenas para testar o Google Analytics.</p>
+        <h1>Pontual Licenças</h1>
 
-    <button onclick="registrarClique()">
-        Clique para testar evento
-    </button>
+        <p>
+            Página da empresa
+        </p>
 
-    <script>
-        function registrarClique() {
-            gtag('event', 'teste_clique');
-        }
-    </script>
+        <div class="acoes">
+
+            <a href="estatisticas.html" class="btn-estatisticas">
+                📊 Ver Estatísticas
+            </a>
+
+        </div>
+
+    </div>
 
 </body>
 
